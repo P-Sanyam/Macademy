@@ -6,10 +6,11 @@ namespace Macademy\Jumpstart\Model;
 
 class Product
 {
-    function __construct(private Category $category) {}
+    function __construct(
+        private Category $category,
+    ) {}
 
-    function getCategoryName()
-    {
+    function getCategoryName() {
         return $this->category->getName();
     }
 }

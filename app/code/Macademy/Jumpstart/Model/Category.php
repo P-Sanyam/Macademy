@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Macademy\Jumpstart\Model;
 
-class Product
-{
-    function __construct(private Category $category) {}
+use Macademy\Jumpstart\Api\CategoryInterface;
 
-    function getCategoryName()
+class Category implements CategoryInterface
+{
+    protected $name;
+
+    public function getName()
     {
         return $this->category->getName();
     }

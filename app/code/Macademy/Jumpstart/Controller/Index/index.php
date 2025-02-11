@@ -1,25 +1,20 @@
 <?php
 
-declare (strict_types = 1);
+declare(strict_types=1);
 
 namespace Macademy\Jumpstart\Controller\Index;
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
-use Magento\Framework\Controller\ResultFactory;
 
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\View\Result\PageFactory;
 
-class Index extends Action
+class Index implements HttpGetActionInterface
 {
-    public function __construct(Context $context)
-    {
-        parent::__construct($context);
-    }
+    public function __construct(
+        private PageFactory $pageFactory,
+    ) {}
 
-    public function execute()
+    public function execute(): Page
     {
-        $resultPage = $this->resultFactory->create(ResultFactory::TYPE_RAW);
-        $resultPage->setContents("Welcome to Sanyam's Module");
-        return $resultPage;
+        return $this->pageFactory->create();
     }
 }
-?>
